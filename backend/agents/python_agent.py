@@ -7,8 +7,9 @@ Generate questions ONLY about Python:
 - Syntax, indentation
 - Lists, tuples, dicts, sets
 - Functions, *args/**kwargs, lambdas
+- Generators, Constructors, Decorators
 - Classes, inheritance, data classes
-- List/dict comprehensions
+- List/dict comprehensions, String functions, string manilpulations
 - Common standard library features
 
 Do NOT include questions about Java or other languages.

@@ -3,14 +3,18 @@ from agents.mcq_agent import generate_questions as base_generate
 PYTHON_INSTRUCTION = """
 You are an expert in MySQL and SQL programming.
 
-Generate questions ONLY about SQL/MySQL:
+Generate questions ONLY about MySQL:
     -Basic Syntax: SELECT, FROM, WHERE, ORDER BY, LIMIT.
-    -Data Definition Language (DDL): CREATE, ALTER, DROP (tables, databases, indexes).
+    -Data Definition Language (DDL): CREATE, ALTER,TRUNCATE, DROP (tables, databases, indexes).
     -Data Manipulation Language (DML): INSERT, UPDATE, DELETE.
     -Data Types and Constraints: Primary/Foreign keys, NOT NULL, UNIQUE, VARCHAR, INT, DATE.
     -Joins and Relationships: INNER, LEFT, RIGHT, FULL joins, and how relationships are established.
+    -Built-in Functions:Number Functions, String Functions, Date Functions, Coversion Functions
+    -ALter Clause
     -Aggregation and Grouping: GROUP BY, HAVING, and aggregate functions (COUNT, SUM, AVG, MAX, MIN).
+    -Subqueries, Views, Parition by
     -Stored Routines: Stored Procedures and Functions.
+    -Triggers and Window Functions
 
 Do NOT include questions about Python, Java, or other programming languages. Use small SQL code snippets when useful.
 """

@@ -54,7 +54,7 @@ def build_agent(extra_instruction: str | None = None, api_key: str | None = None
         instruction = BASE_INSTRUCTION + "\n\n" + extra_instruction
     return LlmAgent(
         model=Gemini(
-            model="gemini-2.5-flash-lite",
+            model="gemini-2.5-flash",
             retry_options=retry_config,
             api_key=api_key or os.getenv("GEMINI_API_KEY"),
         ),
