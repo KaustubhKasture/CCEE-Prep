@@ -1,4 +1,3 @@
-// src/components/mcq-test.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -81,7 +80,7 @@ export function MCQTest({ questions, onReset }: MCQTestProps) {
                   className="space-y-2"
                 >
                   {Object.entries(q.options).map(([key, text]) => (
-                    <div key={key} className="flex items-start space-x-3 p-2 hover:bg-gray-50 rounded-md">
+                    <div key={key} className="flex items-start space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
                       <RadioGroupItem 
                         value={key} 
                         id={`q${q.id}-${key}`} 
@@ -139,13 +138,13 @@ export function MCQTest({ questions, onReset }: MCQTestProps) {
                 {scorePercent.toFixed(1)}%
               </div>
             </CardContent>
-          </Card>
+          </Card> 
 
           {questions.map((q, index) => {
             const userAnswer = answers[q.id];
             const isCorrect = userAnswer === q.correct_answer;
             return (
-              <Card key={q.id} className={`border-4 ${isCorrect ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50'}`}>
+              <Card key={q.id} className={`border-4 ${isCorrect ? "border-green-400 bg-green-50 dark:bg-green-900/30" : "border-red-400 bg-red-50 dark:bg-red-900/30"}`}>
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <div className="font-semibold text-lg">
@@ -184,13 +183,14 @@ export function MCQTest({ questions, onReset }: MCQTestProps) {
                     </div>
                   </div>
                   
-                  <div className="mb-4 p-3 bg-gray-100 rounded-lg">
-                    <strong>Your answer:</strong> <span className="font-mono bg-white px-2 py-1 rounded">{userAnswer}</span>
+                  <div className="mb-4 p-3 rounded-lg bg-gray-100 dark:bg-gray-800 dark:text-gray-100">
+                    <strong>Your answer:</strong> <span className="font-mono px-2 py-1 rounded bg-white dark:bg-gray-700">{userAnswer}</span>
                     {" "} | <strong>Correct:</strong> <span className="font-mono bg-emerald-100 px-2 py-1 rounded text-emerald-800">{q.correct_answer}</span>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t">
+                  <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <strong className="text-lg block mb-3">Explanation:</strong>
+                    <div className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 dark:text-gray-100"></div>
                     <ReactMarkdown
                       components={{
                         code({ inline, className, children, ...props }: any) {

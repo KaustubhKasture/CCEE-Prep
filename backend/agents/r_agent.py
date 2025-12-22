@@ -1,6 +1,6 @@
 from agents.mcq_agent import generate_questions as base_generate
 
-PYTHON_INSTRUCTION = """
+R_INSTRUCTION = """
 You are an expert in R programming.
 Generate questions ONLY about R:
 
@@ -19,7 +19,7 @@ Generate questions ONLY about R:
 Do NOT include questions about Python, Java, or other programming languages. Use small shell command snippets when useful.
 """
 
-async def generate_sql_questions(
+async def generate_r_questions(
     difficulty: str,
     num_questions: int,
     api_key: str | None = None,
@@ -27,19 +27,19 @@ async def generate_sql_questions(
     fallback_model: str = "gpt-3.5-turbo"
 ) -> str:
     return await base_generate(
-        subject="linux",
+        subject="r",
         difficulty=difficulty,
         num_questions=num_questions,
         api_key=api_key,
         fallback_api_key=fallback_api_key,
         fallback_model=fallback_model,
-        extra_instruction=PYTHON_INSTRUCTION,
+        extra_instruction=R_INSTRUCTION,
     )
 
 import asyncio
 
 async def _test():
-    text = await generate_sql_questions(
+    text = await generate_r_questions(
         difficulty="easy",
         num_questions=5,
         api_key=None,

@@ -6,6 +6,11 @@ import re
 from agents.java_agent import generate_java_questions
 from agents.python_agent import generate_python_questions
 from agents.sql_agent import generate_sql_questions
+from agents.r_agent import generate_r_questions
+from agents.linux_agent import generate_linux_questions
+from agents.analytics import generate_analytics_questions
+from agents.cassandra_agent import generate_cassandra_questions
+from agents.mongodb_agent import generate_mongodb_questions
 
 router = APIRouter()
 
@@ -77,6 +82,46 @@ async def generate_questions_api(req:QuestionRequest):
         )
     elif subject in ("sql", "dbms"):
         raw = await generate_sql_questions(
+            difficulty=req.difficulty,
+            num_questions=req.num_questions,
+            api_key=req.api_key,
+            fallback_api_key=req.fallback_api_key,
+            fallback_model=req.fallback_model
+        )
+    elif subject in ("r"):
+        raw = await generate_r_questions(
+            difficulty=req.difficulty,
+            num_questions=req.num_questions,
+            api_key=req.api_key,
+            fallback_api_key=req.fallback_api_key,
+            fallback_model=req.fallback_model
+        )
+    elif subject in ("linux"):
+        raw = await generate_linux_questions(
+            difficulty=req.difficulty,
+            num_questions=req.num_questions,
+            api_key=req.api_key,
+            fallback_api_key=req.fallback_api_key,
+            fallback_model=req.fallback_model
+        )
+    elif subject in ("analytics"):
+        raw = await generate_analytics_questions(
+            difficulty=req.difficulty,
+            num_questions=req.num_questions,
+            api_key=req.api_key,
+            fallback_api_key=req.fallback_api_key,
+            fallback_model=req.fallback_model
+        )
+    elif subject in ("cassandra"):
+        raw = await generate_cassandra_questions(
+            difficulty=req.difficulty,
+            num_questions=req.num_questions,
+            api_key=req.api_key,
+            fallback_api_key=req.fallback_api_key,
+            fallback_model=req.fallback_model
+        )
+    elif subject in ("mongodb"):
+        raw = await generate_mongodb_questions(
             difficulty=req.difficulty,
             num_questions=req.num_questions,
             api_key=req.api_key,

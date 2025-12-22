@@ -20,7 +20,7 @@ interface MCQConfigProps {
   loading: boolean;
 }
 
-const subjects = ["java", "python", "sql"];
+const subjects = ["java", "python", "sql", "r", "linux","analytics","cassandra","mongodb"];
 const difficulties = ["easy", "medium", "hard"];
 const fallbackModels = ["gpt-3.5-turbo", "gpt-4"];
 
@@ -43,7 +43,7 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 p-4 max-w-xl mx-auto">
-      <div>
+      <div className="flex flex-col space-y-2">
         <Label htmlFor="api_key">Gemini API Key (required)</Label>
         <Input
           id="api_key"
@@ -55,8 +55,8 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
         />
       </div>
 
-      <div>
-        <Label htmlFor="fallback_api_key">OpenAI API Key (optional fallback)</Label>
+      <div className="flex flex-col space-y-2">
+        <Label htmlFor="fallback_api_key">OpenAI API Key (Optional)</Label>
         <Input
           id="fallback_api_key"
           type="password"
@@ -66,8 +66,8 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
         />
       </div>
 
-      <div>
-        <Label htmlFor="fallback_model">Fallback Model</Label>
+      <div className="flex flex-col space-y-2">
+        <Label htmlFor="fallback_model">Fallback Model (Optional)</Label>
         <Select value={fallbackModel} onValueChange={setFallbackModel}>
           <SelectTrigger id="fallback_model" className="w-full">
             <SelectValue placeholder="Select fallback model" />
@@ -82,7 +82,7 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
         </Select>
       </div>
 
-      <div>
+      <div className="flex flex-col space-y-2">
         <Label htmlFor="subject">Subject</Label>
         <Select value={subject} onValueChange={setSubject}>
           <SelectTrigger id="subject" className="w-full">
@@ -98,7 +98,7 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
         </Select>
       </div>
 
-      <div>
+      <div className="flex flex-col space-y-2">
         <Label>Difficulty</Label>
         <RadioGroup
           value={difficulty}
@@ -114,7 +114,7 @@ export function MCQConfig({ onGenerate, loading }: MCQConfigProps) {
         </RadioGroup>
       </div>
 
-      <div>
+      <div className="flex flex-col space-y-2">
         <Label htmlFor="num_questions">Number of Questions: {numQuestions}</Label>
         <Slider
           id="num_questions"

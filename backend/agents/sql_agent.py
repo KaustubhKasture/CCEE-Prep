@@ -1,6 +1,6 @@
 from agents.mcq_agent import generate_questions as base_generate
 
-PYTHON_INSTRUCTION = """
+SQL_INSTRUCTION = """
 You are an expert in MySQL and SQL programming.
 
 Generate questions ONLY about MySQL:
@@ -33,7 +33,7 @@ async def generate_sql_questions(
         api_key=api_key,
         fallback_api_key=fallback_api_key,
         fallback_model=fallback_model,
-        extra_instruction=PYTHON_INSTRUCTION,
+        extra_instruction=SQL_INSTRUCTION,
     )
 
 import asyncio

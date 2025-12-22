@@ -1,6 +1,6 @@
 from agents.mcq_agent import generate_questions as base_generate
 
-PYTHON_INSTRUCTION = """
+LINUX_INSTRUCTION = """
 You are an expert in Linux and shell programming.
 Generate questions ONLY about Linux:
 
@@ -27,7 +27,7 @@ Generate questions ONLY about Linux:
 Do NOT include questions about Python, Java, or other programming languages. Use small shell command snippets when useful.
 """
 
-async def generate_sql_questions(
+async def generate_linux_questions(
     difficulty: str,
     num_questions: int,
     api_key: str | None = None,
@@ -41,13 +41,13 @@ async def generate_sql_questions(
         api_key=api_key,
         fallback_api_key=fallback_api_key,
         fallback_model=fallback_model,
-        extra_instruction=PYTHON_INSTRUCTION,
+        extra_instruction=LINUX_INSTRUCTION,
     )
 
 import asyncio
 
 async def _test():
-    text = await generate_sql_questions(
+    text = await generate_linux_questions(
         difficulty="easy",
         num_questions=5,
         api_key=None,

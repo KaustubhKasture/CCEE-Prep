@@ -5,7 +5,7 @@ export interface GenerateQuestionsRequest {
   api_key: string; // Gemini API key (required)
   fallback_api_key?: string; // optional OpenAI API key fallback
   fallback_model?: string; // optional fallback model, e.g. "gpt-3.5-turbo"
-  subject: "java" | "python" | "sql";
+  subject: "java" | "python" | "sql" | "r" | "linux" | "analytics" | "cassandra" | "mongodb";
   difficulty: "easy" | "medium" | "hard";
   num_questions: number;
 }
