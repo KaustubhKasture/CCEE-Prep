@@ -48,7 +48,7 @@ Output format (strict JSON):
 }
 """
 
-def build_agent(extra_instruction: str | None = None, api_key: str | None = None) -> LlmAgent:
+def build_agent(extra_instruction: str | None = None) -> LlmAgent:
     """Create a Gemini-based MCQ agent. Optionally extended with subject-specific instructions."""
     instruction = BASE_INSTRUCTION
     if extra_instruction:
@@ -57,7 +57,6 @@ def build_agent(extra_instruction: str | None = None, api_key: str | None = None
         model=Gemini(
             model="gemini-2.5-flash",
             retry_options=retry_config,
-            api_key=api_key or os.getenv("GEMINI_API_KEY"),
         ),
         name="mcq_agent",
         instruction=instruction,
@@ -99,6 +98,7 @@ async def generate_questions(
 
     if not effective_api_key:
         raise Exception("No Gemini API key provided")
+    os.environ["GEMINI_API_KEY"] = effective_api_key
     prompt = (
         f"Generate {num_questions} {difficulty} difficulty MCQ questions on {subject}. "
         "Follow the JSON format described in your instructions."
@@ -121,7 +121,7 @@ async def generate_questions(
             session_id=session_id,
         )
 
-        agent = build_agent(extra_instruction=extra_instruction, api_key=effective_api_key)
+        agent = build_agent(extra_instruction=extra_instruction)
         runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
         content = types.Content(
             role="user",
