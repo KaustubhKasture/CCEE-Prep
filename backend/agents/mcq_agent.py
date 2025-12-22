@@ -8,7 +8,8 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from litellm import acompletion
 
-load_dotenv()
+if os.getenv('RENDER') is None:
+    load_dotenv()
 
 # Retry config
 retry_config = types.HttpRetryOptions(
@@ -162,5 +163,5 @@ async def _test():
     )
     print(text)
 
-if __name__ == "__main__":
+if __name__ == "__main__" and os.getenv("ENV") == "local":
     asyncio.run(_test())

@@ -1,3 +1,4 @@
+import os
 from agents.mcq_agent import generate_questions as base_generate
 
 LINUX_INSTRUCTION = """
@@ -54,5 +55,5 @@ async def _test():
     )
     print(text)
 
-if __name__ == "__main__":
+if __name__ == "__main__" and os.getenv("ENV") == "local":
     asyncio.run(_test())

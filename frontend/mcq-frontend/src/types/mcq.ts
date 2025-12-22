@@ -1,4 +1,3 @@
-// src/types/mcq.ts
 
 export interface Question {
   id: number;
