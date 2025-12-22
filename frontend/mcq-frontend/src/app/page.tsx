@@ -94,14 +94,14 @@ export default function HomePage() {
 
     <div className="flex gap-3 text-black dark:text-gray-300">
       <a
-        href="mailto:yourmail@example.com"
+        href="mailto:kaustubh.kasture10@gmail.com"
         className="hover:text-gray-800 dark:hover:text-white transition"
         aria-label="Email"
       >
         <MdEmail size={22} />
       </a>
       <a
-        href="https://twitter.com/yourhandle"
+        href="https://x.com/armodrillo1000"
         target="_blank"
         rel="noreferrer"
         className="hover:text-gray-800 dark:hover:text-white transition"
@@ -110,7 +110,7 @@ export default function HomePage() {
         <FaTwitter size={22} />
       </a>
       <a
-        href="https://www.linkedin.com/in/your-handle"
+        href="https://www.linkedin.com/in/kaustubh-kasture/"
         target="_blank"
         rel="noreferrer"
         className="hover:text-gray-800 dark:hover:text-white transition"
@@ -119,7 +119,7 @@ export default function HomePage() {
         <FaLinkedin size={22} />
       </a>
       <a
-        href="https://github.com/your-github"
+        href="https://github.com/KaustubhKasture"
         target="_blank"
         rel="noreferrer"
         className="hover:text-gray-800 dark:hover:text-white transition"

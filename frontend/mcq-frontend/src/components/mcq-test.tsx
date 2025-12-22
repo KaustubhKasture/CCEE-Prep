@@ -190,7 +190,6 @@ export function MCQTest({ questions, onReset }: MCQTestProps) {
 
                   <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                     <strong className="text-lg block mb-3">Explanation:</strong>
-                    <div className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 dark:text-gray-100"></div>
                     <ReactMarkdown
                       components={{
                         code({ inline, className, children, ...props }: any) {
