@@ -95,6 +95,10 @@ async def generate_questions(
     Main function your API/frontend will call.
     Returns the raw text from Gemini (later you will parse JSON from it).
     """
+    effective_api_key = api_key or os.getenv("GEMINI_API_KEY")
+
+    if not effective_api_key:
+        raise Exception("No Gemini API key provided")
     prompt = (
         f"Generate {num_questions} {difficulty} difficulty MCQ questions on {subject}. "
         "Follow the JSON format described in your instructions."
@@ -117,7 +121,7 @@ async def generate_questions(
             session_id=session_id,
         )
 
-        agent = build_agent(extra_instruction=extra_instruction, api_key=api_key)
+        agent = build_agent(extra_instruction=extra_instruction, api_key=effective_api_key)
         runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
         content = types.Content(
             role="user",
